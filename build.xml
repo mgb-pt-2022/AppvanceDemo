@@ -77,7 +77,7 @@
 		<get src="https://appvanceivy.s3.us-west-2.amazonaws.com/projects/AppvanceCIClientWithDeps/master/latest/ivy" dest="${lib}/RestClient.jar"/>
     	<taskdef resource="net/sf/antcontrib/antlib.xml">
         	<classpath>
-        		<pathelement location="${basedir}/ant.lib/ant-contrib-1.0b3.jar" />
+        		<pathelement location="${env.ANT_HOME}/lib/ant-contrib-1.0b3.jar" />
         	</classpath>
     	</taskdef>
 	</target>
