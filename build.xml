@@ -5,6 +5,10 @@
 <project name="AppvanceCI" default="default" basedir=".">
 	<description>Appvance Dashboard CI/CD</description>
 	
+        <taskdef name="executeScenario" classname="com.appvance.ci.ExecuteScenario">
+           <classpath refid="RestClientLibPath" />
+        </taskdef>
+
 	<!-- Most of following values should be rewritten by CI tool job parameters -->
 
 	<property name="lib" value="lib" /> <!-- folder to store the dependency RestClient.jar  -->
@@ -385,5 +389,9 @@
 			customer="${customer}"
 		/> 
 	</target>
+
+        <target name="runDemo" depends="deps">
+           <executeScenario aiqCreds="controller01.json" dir="C:\td_example_scripts" scenario="demo_scenario.scenario" consoleDetails="${consoleDetails}" resultsFolder="${scenarioResults}" />
+        </target>
    
 </project>
