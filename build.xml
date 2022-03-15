@@ -4,11 +4,11 @@
 -->
 <project name="AppvanceCI" default="default" basedir=".">
 	<description>Appvance Dashboard CI/CD</description>
-	
+	<!--//
         <taskdef name="executeScenario" classname="com.appvance.ci.ExecuteScenario">
            <classpath refid="RestClientLibPath" />
         </taskdef>
-
+        //-->
 	<!-- Most of following values should be rewritten by CI tool job parameters -->
 
 	<property name="lib" value="lib" /> <!-- folder to store the dependency RestClient.jar  -->
