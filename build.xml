@@ -17,14 +17,14 @@
    	<!-- General access parameters -->
    	<property name="aiqCreds" value="aiqcreds.json" /> <!-- AIQ server DNS and login creds  -->
    	<property name="consoleDetails" value="consoleDetails.json" /> <!--  json file created to write EC2 details once connected  -->
-    <property name="awsCredentials" value="ec2.creds" /> <!-- AWS credentials with permission to start and stop the EC2 instances and upload dashboards to s3  -->
+        <property name="awsCredentials" value="ec2.creds" /> <!-- AWS credentials with permission to start and stop the EC2 instances and upload dashboards to s3  -->
 	
 	<property name="dataset" value="WebDataset.json" /> <!-- json data set if needed -->
 
 	<!-- Execute Scenario's parameters -->
    	<property name="dir" value="scenarios" /> <!-- folder that contains scenario and resources needed by it  -->
    	<property name="scenario" value="functional.scenario" /> <!-- scenario to be executed by executeScenario  -->
-    <property name="stopOnFailure" value="false" /> <!-- when true will throw exception if all testcases in scenario fails  --> 
+        <property name="stopOnFailure" value="false" /> <!-- when true will throw exception if all testcases in scenario fails  --> 
    	<property name="scenarioResults" value="scenarioResults" />
 	<property name="blueprintResults" value="blueprintResults" /> <!-- folder where result junit xml files will be created after execution of scenario  -->
 
@@ -46,7 +46,7 @@
 	
    
 	<!-- checkScenarioResult parameters -->
-   		<!-- updateJira parameters -->
+   	<!-- updateJira parameters -->
 	<property name="maxAllowedFailures" value="10" /> <!-- max number of failing executions -->
 	<property name="minSuccessRatio" value="95" /> <!-- min percentage of success scenarios -->
 	<property name="maxFailures" value="10" />
