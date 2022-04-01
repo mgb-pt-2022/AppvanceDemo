@@ -237,6 +237,7 @@
 		<fetchScenarioResults aiqCreds="${aiqCreds}" consoleDetails="${consoleDetails}" resultsFolder="${scenarioResults}" scenario="${scenario}" stopOnFailure="${stopOnFailure}" />
 	</target>
    
+<!--// 
 	<target name="createScenariosDashboard" depends="executeScenario" description="EXAMPLE: ant createScenariosDashboard -Ddir=projectName/scenarios -Dscenario=FunctionalBulk.scenario -Dproduct=ProductName -DprojectName=ProjectName">
 		<mkdir dir="IvyClassFolder" />
 		<touch file="IvyClassFolder/class.all" />
@@ -304,7 +305,7 @@
 			bucketBase="${Bucket}" 
 			customer="${customer}" />
 	</target>
-
+//-->
 	<!-- typically reportFile would be report/report.json  -->
 	<target name="checkScenarioResults" depends="deps">
     	<taskdef name="checkScenarioResult" classname="com.appvance.ci.CheckScenarioResults">
