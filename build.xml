@@ -15,7 +15,7 @@
    
 	
    	<!-- General access parameters -->
-   	<property name="aiqCreds" value="controller.json" /> <!-- AIQ server DNS and login creds  -->
+   	<property name="aiqCreds" value="aiqcreds.json" /> <!-- AIQ server DNS and login creds  -->
    	<property name="consoleDetails" value="consoleDetails.json" /> <!--  json file created to write EC2 details once connected  -->
     <property name="awsCredentials" value="ec2.creds" /> <!-- AWS credentials with permission to start and stop the EC2 instances and upload dashboards to s3  -->
 	
@@ -391,7 +391,87 @@
 	</target>
 
         <target name="runDemo" depends="deps">
-           <executeScenario aiqCreds="controller01.json" dir="C:\td_example_scripts" scenario="demo_scenario.scenario" consoleDetails="${consoleDetails}" resultsFolder="${scenarioResults}" />
+
+           <taskdef name="executeScenario" classname="com.appvance.ci.ExecuteScenario">
+		<classpath refid="RestClientLibPath" />
+	   </taskdef>
+
+           <executeScenario aiqCreds="${aiqCreds}" dir="C:/td_example_scripts" scenario="demo_scenario.scenario" consoleDetails="${consoleDetails}" resultsFolder="${scenarioResults}" />
+        
+           <taskdef name="fetchScenarioResults" classname="com.appvance.ci.FetchScenarioResults">
+		<classpath refid="RestClientLibPath" />
+	   </taskdef>
+
+           <fetchScenarioResults aiqCreds="${aiqCreds}" consoleDetails="${consoleDetails}" resultsFolder="${scenarioResults}" scenario="demo_scenario.scenario" stopOnFailure="${stopOnFailure}" />
+
         </target>
+
+        <target name="createScenariosDashboard" depends="runDemo">
+		<mkdir dir="IvyClassFolder" />
+		<touch file="IvyClassFolder/class.all" />
+		
+		<taskdef name="Report" classname="com.appvance.ci.Report">
+			<classpath refid="RestClientLibPath" />
+		</taskdef>
+		<mkdir dir="build" />
+		<Report 
+			projectName="${scenario}" 
+			resultsFolder="${scenarioResults}" 
+			reportFolder="${scenarioReports}" 
+			executionType="scenarios" 
+			environment="${environment}" 
+			consoleDetails="${consoleDetails}" 
+			product="${product}" 
+			buildVersion="${buildVersion}" 
+			bucketBase="${Bucket}" 
+			aiqCreds="${aiqCreds}" />
+	
+		<taskdef name="uploadToDashboard" classname="com.appvance.ci.UploadToDashboard">
+			<classpath refid="RestClientLibPath" />
+		</taskdef>
+		<uploadToDashboard 
+			bucketBase="${Bucket}" 
+			product="${product}" 
+			projectName="${scenario}" 
+			environment="${environment}" 
+			executionType="scenarios" 
+			credentials="${awsCredentials}" 
+			buildVersion="${buildVersion}" 
+			reportFolder="${scenarioReports}" 
+			consoleDetails="${consoleDetails}"
+			aiqCreds="${aiqCreds}" />
+
+		<taskdef name="HouseKeeping" classname="com.appvance.ci.HouseKeeping">
+		 <classpath refid="RestClientLibPath" />
+		</taskdef>
+		<HouseKeeping 
+			credentials="${awsCredentials}" 
+			keep="${MaxBuilds}" 
+			bucketBase="${Bucket}" 
+			executionType="scenarios" 
+			product="${product}" 
+			environment="${environment}" />
+	
+		<taskdef name="ProjectDashboard" classname="com.appvance.ci.ProjectDashboard">
+			<classpath refid="RestClientLibPath" />
+		</taskdef>	  
+		<ProjectDashboard 
+			credentials="${awsCredentials}" 
+			bucketBase="${Bucket}" 
+			customer="${customer}" 
+			product="${product}" 
+			environment="${environment}" 
+			buildVersion="${buildVersion}" 
+			executionType="scenarios" />
+			
+		<taskdef name="ProductDashboard" classname="com.appvance.ci.ProductsDashboard">
+			<classpath refid="RestClientLibPath" />
+		</taskdef>
+		<ProductDashboard 
+			credentials="${awsCredentials}" 
+			bucketBase="${Bucket}" 
+			customer="${customer}" />
+
+   </target>
    
 </project>
