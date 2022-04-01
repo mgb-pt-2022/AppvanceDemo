@@ -12,6 +12,9 @@
 	<!-- Most of following values should be rewritten by CI tool job parameters -->
 
 	<property name="lib" value="lib" /> <!-- folder to store the dependency RestClient.jar  -->
+
+        <!--// added by mburnside for our demo" //-->
+        <property name="demoscenario" value ="demo_scenario.scenario" />
    
 	
    	<!-- General access parameters -->
@@ -397,13 +400,13 @@
 		<classpath refid="RestClientLibPath" />
 	   </taskdef>
 
-           <executeScenario aiqCreds="${aiqCreds}" dir="scripts" scenario="demo_scenario.scenario" consoleDetails="${consoleDetails}" resultsFolder="${scenarioResults}" />
+           <executeScenario aiqCreds="${aiqCreds}" dir="scripts" scenario="${demoscenario}" consoleDetails="${consoleDetails}" resultsFolder="${scenarioResults}" />
         
            <taskdef name="fetchScenarioResults" classname="com.appvance.ci.FetchScenarioResults">
 		<classpath refid="RestClientLibPath" />
 	   </taskdef>
 
-           <fetchScenarioResults aiqCreds="${aiqCreds}" consoleDetails="${consoleDetails}" resultsFolder="${scenarioResults}" scenario="demo_scenario.scenario" stopOnFailure="${stopOnFailure}" />
+           <fetchScenarioResults aiqCreds="${aiqCreds}" consoleDetails="${consoleDetails}" resultsFolder="${scenarioResults}" scenario="${demoscenario}" stopOnFailure="${stopOnFailure}" />
 
         </target>
 
