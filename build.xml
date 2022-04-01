@@ -397,7 +397,7 @@
 		<classpath refid="RestClientLibPath" />
 	   </taskdef>
 
-           <executeScenario aiqCreds="${aiqCreds}" dir="C:\\td_example_scripts" scenario="demo_scenario.scenario" consoleDetails="${consoleDetails}" resultsFolder="${scenarioResults}" />
+           <executeScenario aiqCreds="${aiqCreds}" dir="scripts" scenario="demo_scenario.scenario" consoleDetails="${consoleDetails}" resultsFolder="${scenarioResults}" />
         
            <taskdef name="fetchScenarioResults" classname="com.appvance.ci.FetchScenarioResults">
 		<classpath refid="RestClientLibPath" />

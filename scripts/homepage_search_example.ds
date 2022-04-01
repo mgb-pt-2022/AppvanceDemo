@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testcase  name= '' description='' author='' version=''>
+<dpl filename='' exectype='' errorhandling='' type='HashDPL' locale='en_US'/>
+<fallback useFallback='false'/>
+<step action='navigateTo' value='"https://www.peraton.com/"' type='web' desc='' isThinkTime='false' isCommented='false' sequence='0'>
+  <dialect type='sahi'>
+   <accessor type='navigateTo' value='' selected='true'/>
+</dialect>
+</step>
+<step action='click' value='""' type='web' desc='' isThinkTime='false' isCommented='false' sequence='0'>
+  <dialect type='sahi'>
+   <accessor type='click' value='italic(&quot;fa fa-search[1]&quot;)' selected='true'/>
+   <accessor type='click' value='italic(0,_in(link(&quot;mega-menu-link[38]&quot;)))' selected='false'/>
+   <accessor type='click' value='italic(1)' selected='false'/>
+</dialect>
+</step>
+<step action='setValue' value='"products"' type='web' desc='' isThinkTime='false' isCommented='false' sequence='0'>
+  <dialect type='sahi'>
+   <accessor type='setValue' value='searchbox(&quot;search-field&quot;)' selected='true'/>
+   <accessor type='setValue' value='searchbox(&quot;s&quot;)' selected='false'/>
+   <accessor type='setValue' value='searchbox(0,_in(label(&quot;Search for:&quot;)))' selected='false'/>
+   <accessor type='setValue' value='searchbox(&quot;Search for:&quot;)' selected='false'/>
+   <accessor type='setValue' value='searchbox(0)' selected='false'/>
+</dialect>
+</step>
+<step action='click' value='""' type='web' desc='' isThinkTime='false' isCommented='false' sequence='0'>
+  <dialect type='sahi'>
+   <accessor type='click' value='submit(&quot;button button-more-black search-submit&quot;)' selected='true'/>
+   <accessor type='click' value='submit(&quot;Search&quot;)' selected='false'/>
+   <accessor type='click' value='submit(5)' selected='false'/>
+</dialect>
+</step>
+<step action='wait' value='5000' type='web' desc='' isThinkTime='false' isCommented='false' sequence='0'>
+  <dialect type='sahi'>
+   <accessor type='wait' value='' selected='true'/>
+</dialect>
+</step>
+<step action='verifyTextPresent' value='"Search Results for: products"' type='web' desc='' isThinkTime='false' isCommented='false' sequence='0'>
+  <dialect type='sahi'>
+   <accessor type='verifyTextPresent' value='"SEARCH RESULTS FOR: PRODUCTS"' selected='true'/>
+</dialect>
+</step>
+</testcase>
