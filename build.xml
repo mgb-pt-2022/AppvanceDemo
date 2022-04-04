@@ -400,12 +400,17 @@
 		<classpath refid="RestClientLibPath" />
 	   </taskdef>
 
+           <echo message="aiqCreds: ${aiqCreds}" />
+           <echo message="consoleDetails: ${consoleDetails}" />
+           <echo message="scenarioResults: ${scenarioResults}" />
+           <echo message="demoscenario: ${demoscenario}" />
+           <echo message="stopOnFailure: ${stopOnFailure}" />
            <executeScenario aiqCreds="${aiqCreds}" dir="scripts" scenario="${demoscenario}" consoleDetails="${consoleDetails}" resultsFolder="${scenarioResults}" />
         
            <taskdef name="fetchScenarioResults" classname="com.appvance.ci.FetchScenarioResults">
 		<classpath refid="RestClientLibPath" />
 	   </taskdef>
-
+                
            <fetchScenarioResults aiqCreds="${aiqCreds}" consoleDetails="${consoleDetails}" resultsFolder="${scenarioResults}" scenario="${demoscenario}" stopOnFailure="${stopOnFailure}" />
 
         </target>
