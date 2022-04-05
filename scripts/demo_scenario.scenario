@@ -49,7 +49,7 @@
       <opt name="ConsoleAsProxy" value="false"/>
     </options>
     <options type="reporting">
-      <opt name="summaryType" value="testCaseOnly"/>
+      <opt name="summaryType" value="complete"/>
       <opt name="DynamicParameterList" value="[]"/>
     </options>
     <options type="apc">
