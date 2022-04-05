@@ -396,6 +396,8 @@
 
         <target name="runDemo" depends="deps">
 
+           <delete dir="${scenarioResults}" />
+
            <taskdef name="executeScenario" classname="com.appvance.ci.ExecuteScenario">
 		<classpath refid="RestClientLibPath" />
 	   </taskdef>
